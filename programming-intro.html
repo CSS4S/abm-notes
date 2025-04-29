@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Agent-based modeling for sustainability - 2&nbsp; Introduction to R programming for agent-based modeling</title>
+<title>Agent-based modeling for sustainability - 2&nbsp; Agent-based model programming in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./networks.html" rel="next">
+<link href="./social-science.html" rel="next">
 <link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,10 +128,39 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;family=Source+Code+Pro:wght@400;500;600;700&amp;display=swap">
 
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -86,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming-intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R programming for agent-based modeling</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming-intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Agent-based model programming in R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -129,13 +212,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./programming-intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R programming for agent-based modeling</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./networks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Social networks</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Agent-based model programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -150,37 +227,37 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./diffusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Diffusion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Diffusion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cooperation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cooperation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Cooperation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./coordination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coordination</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Coordination</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./polarization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Polarization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Polarization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Uncertainty</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Uncertainty</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./rl-agents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reinforcement learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reinforcement learning</span></span></a>
   </div>
 </li>
       </ul>
@@ -196,20 +273,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./abm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Agent-based models</span></span></a>
+  <a href="./writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Writing and project development</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Writing</span></span></a>
+  <a href="./abm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Programming agent-based model analyses</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hpc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">High-performance computing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">High-performance computing</span></span></a>
   </div>
 </li>
       </ul>
@@ -226,14 +303,64 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#getting-started-with-r-and-rstudio" id="toc-getting-started-with-r-and-rstudio" class="nav-link active" data-scroll-target="#getting-started-with-r-and-rstudio"><span class="header-section-number">2.1</span> Getting Started with R and RStudio</a>
+  <ul class="collapse">
+  <li><a href="#install-the-course-package" id="toc-install-the-course-package" class="nav-link" data-scroll-target="#install-the-course-package"><span class="header-section-number">2.1.1</span> Install the course package</a></li>
+  <li><a href="#quarto-notebooks-and-rendering" id="toc-quarto-notebooks-and-rendering" class="nav-link" data-scroll-target="#quarto-notebooks-and-rendering"><span class="header-section-number">2.1.2</span> Quarto Notebooks and Rendering</a></li>
+  </ul></li>
+  <li><a href="#quickstart-using-socmod" id="toc-quickstart-using-socmod" class="nav-link" data-scroll-target="#quickstart-using-socmod"><span class="header-section-number">2.2</span> Quickstart using <code>socmod</code></a>
+  <ul class="collapse">
+  <li><a href="#create-a-social-network" id="toc-create-a-social-network" class="nav-link" data-scroll-target="#create-a-social-network"><span class="header-section-number">2.2.1</span> Create a social network</a></li>
+  <li><a href="#combine-agents-and-network-into-a-model" id="toc-combine-agents-and-network-into-a-model" class="nav-link" data-scroll-target="#combine-agents-and-network-into-a-model"><span class="header-section-number">2.2.2</span> Combine agents and network into a model</a></li>
+  </ul></li>
+  <li><a href="#r-programming-essentials" id="toc-r-programming-essentials" class="nav-link" data-scroll-target="#r-programming-essentials"><span class="header-section-number">2.3</span> R programming essentials</a>
+  <ul class="collapse">
+  <li><a href="#basic-r-functions-iteration-control-flow-and-data-structures" id="toc-basic-r-functions-iteration-control-flow-and-data-structures" class="nav-link" data-scroll-target="#basic-r-functions-iteration-control-flow-and-data-structures"><span class="header-section-number">2.3.1</span> Basic R: functions, iteration, control flow, and data structures</a></li>
+  <li><a href="#object-oriented-programming-in-r-with-r6" id="toc-object-oriented-programming-in-r-with-r6" class="nav-link" data-scroll-target="#object-oriented-programming-in-r-with-r6"><span class="header-section-number">2.3.2</span> Object-oriented programming in R with R6</a></li>
+  <li><a href="#a-note-on-socmod-and-the-tidyverse" id="toc-a-note-on-socmod-and-the-tidyverse" class="nav-link" data-scroll-target="#a-note-on-socmod-and-the-tidyverse"><span class="header-section-number">2.3.3</span> A note on <code>socmod</code> and the <em>tidyverse</em></a></li>
+  </ul></li>
+  <li><a href="#social-learning-models" id="toc-social-learning-models" class="nav-link" data-scroll-target="#social-learning-models"><span class="header-section-number">2.4</span> Social learning models</a>
+  <ul class="collapse">
+  <li><a href="#success-biased-learning" id="toc-success-biased-learning" class="nav-link" data-scroll-target="#success-biased-learning"><span class="header-section-number">2.4.1</span> Success-biased learning</a></li>
+  <li><a href="#frequency-biased-learning" id="toc-frequency-biased-learning" class="nav-link" data-scroll-target="#frequency-biased-learning"><span class="header-section-number">2.4.2</span> Frequency-biased learning</a></li>
+  </ul></li>
+  <li><a href="#understanding-r-data-types-and-functions" id="toc-understanding-r-data-types-and-functions" class="nav-link" data-scroll-target="#understanding-r-data-types-and-functions"><span class="header-section-number">2.5</span> Understanding R Data Types and Functions</a>
+  <ul class="collapse">
+  <li><a href="#values-variables-lists-and-vectors" id="toc-values-variables-lists-and-vectors" class="nav-link" data-scroll-target="#values-variables-lists-and-vectors"><span class="header-section-number">2.5.1</span> Values, Variables, Lists, and Vectors</a></li>
+  <li><a href="#from-vectors-to-data-frames-and-tibbles" id="toc-from-vectors-to-data-frames-and-tibbles" class="nav-link" data-scroll-target="#from-vectors-to-data-frames-and-tibbles"><span class="header-section-number">2.5.2</span> From Vectors to Data Frames and Tibbles</a></li>
+  </ul></li>
+  <li><a href="#encapsulation-in-agent-based-modeling" id="toc-encapsulation-in-agent-based-modeling" class="nav-link" data-scroll-target="#encapsulation-in-agent-based-modeling"><span class="header-section-number">2.6</span> Encapsulation in agent-based modeling</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">2.6.1</span> Functions</a></li>
+  <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes"><span class="header-section-number">2.6.2</span> Classes</a></li>
+  </ul></li>
+  <li><a href="#functional-programming-style" id="toc-functional-programming-style" class="nav-link" data-scroll-target="#functional-programming-style"><span class="header-section-number">2.7</span> Functional programming style</a></li>
+  <li><a href="#social-networks" id="toc-social-networks" class="nav-link" data-scroll-target="#social-networks"><span class="header-section-number">2.8</span> Social networks</a>
+  <ul class="collapse">
+  <li><a href="#igraph" id="toc-igraph" class="nav-link" data-scroll-target="#igraph">igraph</a></li>
+  <li><a href="#deterministic-networks" id="toc-deterministic-networks" class="nav-link" data-scroll-target="#deterministic-networks"><span class="header-section-number">2.8.1</span> Deterministic networks</a></li>
+  <li><a href="#stochastic-networks" id="toc-stochastic-networks" class="nav-link" data-scroll-target="#stochastic-networks"><span class="header-section-number">2.8.2</span> Stochastic networks</a></li>
+  </ul></li>
+  <li><a href="#agent-based-model-analysis" id="toc-agent-based-model-analysis" class="nav-link" data-scroll-target="#agent-based-model-analysis"><span class="header-section-number">2.9</span> Agent-based model analysis</a>
+  <ul class="collapse">
+  <li><a href="#agents" id="toc-agents" class="nav-link" data-scroll-target="#agents"><span class="header-section-number">2.9.1</span> Agents</a></li>
+  <li><a href="#agent-based-models" id="toc-agent-based-models" class="nav-link" data-scroll-target="#agent-based-models"><span class="header-section-number">2.9.2</span> Agent-based models</a></li>
+  <li><a href="#computational-experiments" id="toc-computational-experiments" class="nav-link" data-scroll-target="#computational-experiments"><span class="header-section-number">2.9.3</span> Computational experiments</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis"><span class="header-section-number">2.9.4</span> Data analysis</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R programming for agent-based modeling</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Agent-based model programming in R</span></h1>
 </div>
 
 
@@ -250,8 +377,621 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>To help design effective sustainability interventions we can deduce which candidate intervention strategies are most effective in a stylized agent-based models implemented and analyzed <em>in silico</em>. To best design these models and understand how they work, it helps to understand our chosen programming language and leverage available software packages that provides useful tools. This includes some select software design concepts, most importantly object-oriented programming. All the interacting <em>agents</em> in agent-based modeling are instances of one or a few <em>classes</em>, which define a certain type of object. In other words, agent-based models are inherently object-oriented, so we close this chapter on some relevant concpets from the theory of object-oriented programming.</p>
+<section id="getting-started-with-r-and-rstudio" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="getting-started-with-r-and-rstudio"><span class="header-section-number">2.1</span> Getting Started with R and RStudio</h2>
+<section id="install-the-course-package" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="install-the-course-package"><span class="header-section-number">2.1.1</span> Install the course package</h3>
+<p>Before you begin, make sure you’ve installed R and RStudio. The RStudio website provides instructions and download links to do both: https://posit.co/download/rstudio-desktop/.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggnetwork")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pak")  # if you don’t already have it; comment out after installation</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pak::pak("css4s/socmod")  # ditto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we need to load packages that we use in this document.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># extended tidyverse</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggnetwork)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(socmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We are going to consider the following situation where Agent 1 is considering installing residential solar (<a href="#fig-solar" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>). Blue lines between agents indicates they are socially acquainted enough to learn from one another, i.e., they are socially connected in a social network.</p>
+<div id="fig-solar" class="quarto-figure quarto-figure-center quarto-float anchored" width="800">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-solar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/clipboard-756462474.png" id="fig-solar" class="img-fluid figure-img" width="800">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-solar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1
+</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create agents...</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Agent 1 is the focal agent, neighbors 2–4 have different wealth levels (fitness), indicated by the number of dollar symbols each agent has in the drawing.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We call solar panels here "Adaptive" and not using solar panels the "Legacy" behavior to emphasize the generality of our results.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>agent_1 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">1</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"1"</span>)  </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>agent_2 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">2</span>, <span class="at">behavior =</span> <span class="st">"Adaptive"</span>, <span class="at">fitness =</span> <span class="dv">4</span>, <span class="at">name =</span> <span class="st">"2"</span>)  </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>agent_3 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">3</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"3"</span>)  </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>agent_4 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">4</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">2</span>, <span class="at">name =</span> <span class="st">"4"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(agent_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Agent&gt;
+  Public:
+    add_neighbors: function (...) 
+    advance_behavior: function () 
+    advance_fitness: function () 
+    clone: function (deep = FALSE) 
+    degree: function () 
+    get_attribute: function (key) 
+    get_attributes: function () 
+    get_behavior: function () 
+    get_fitness: function () 
+    get_id: function () 
+    get_name: function () 
+    get_neighbors: function () 
+    get_next_behavior: function () 
+    get_next_fitness: function () 
+    initialize: function (id, name = NULL, behavior = "0", fitness = 0) 
+    remove_neighbors: function (...) 
+    set_attribute: function (key, value) 
+    set_attributes: function (attr_list) 
+    set_behavior: function (value) 
+    set_fitness: function (value) 
+    set_name: function (name) 
+    set_neighbors: function (nbrs) 
+    set_next_behavior: function (value) 
+    set_next_fitness: function (value) 
+  Private:
+    attributes: list
+    behavior_current: Adaptive
+    behavior_next: Adaptive
+    fitness_current: 4
+    fitness_next: 4
+    id: 2
+    name: 2
+    neighbors: Neighbors, R6</code></pre>
+</div>
+</div>
+</section>
+<section id="quarto-notebooks-and-rendering" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="quarto-notebooks-and-rendering"><span class="header-section-number">2.1.2</span> Quarto Notebooks and Rendering</h3>
+<ul>
+<li>Run individual code chunks with:
+<ul>
+<li><strong>Shift + Cmd + Enter</strong> (Mac)</li>
+<li><strong>Shift + Ctrl + Enter</strong> (Windows)</li>
+</ul></li>
+<li>These run in the <em>same R session</em> as your console. If you define a variable in a chunk, it will also be available in the console.</li>
+<li>Rendering the full document starts a <strong>clean R session</strong>.</li>
+</ul>
+<p>Try writing and running this in a new <code>.qmd</code> file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now go to your console and type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+</div>
+<p>Did it print 42? If so, congrats, you saw the console-notebook connection in action.</p>
+<p>The other way to see the results of code blocks is by <em>rendering</em> the document into .html and other formats. We can render the document by either clicking the “Render” button in RStudio or by checking “Render on Save” then saving (see <span class="quarto-unresolved-ref">?fig-render-options</span>), or use hotkey</p>
+<p><strong>NOTE:</strong> The console and notebook share an <em>environment</em>, which is why code run in the notebook can affect code in the console and vice-versa. This environment is <em>not</em> shared with the rendering process, so when you render a document, none of the code run during rendering will affect the code</p>
+<section id="web-browser-method-for-making-pdf-of-the-problem-sets" class="level4" data-number="2.1.2.1">
+<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="web-browser-method-for-making-pdf-of-the-problem-sets"><span class="header-section-number">2.1.2.1</span> Web browser method for making PDF of the problem sets</h4>
+<p>To submit problem sets to Canvas/Gradescope you’ll need to create PDF versions of the Quarto problem set worksheets. To do this, click the icon with an arrow in front of a little window in the Viewer pane in RStudio (<span class="quarto-unresolved-ref">?fig-open-in-browser</span>). This will open the rendered document in your web browser. From there, you can print the document to PDF using the print function in your web browser.</p>
+</section>
+</section>
+</section>
+<section id="quickstart-using-socmod" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="quickstart-using-socmod"><span class="header-section-number">2.2</span> Quickstart using <code>socmod</code></h2>
+<p>Here we will do a quick-start example of how to use <code>socmod</code> to make sure everything installed as we expected, and to demonstrate the connection between some theory we covered Monday with the code we’ll be working with in this class.</p>
+<p>We are going to consider the following situation where Agent 1 is considering installing residential solar (<a href="#fig-solar" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>). Blue lines between agents indicates they are socially acquainted enough to learn from one another, i.e., they are socially connected in a social network.</p>
+<p><img src="images/clipboard-756462474.png" class="img-fluid" width="800"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create agents...</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Agent 1 is the focal agent, neighbors 2–4 have different wealth levels (fitness), indicated by the number of dollar symbols each agent has in the drawing.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We call solar panels here "Adaptive" and not using solar panels the "Legacy" behavior to emphasize the generality of our results.</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>agent_1 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">1</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"1"</span>)  </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>agent_2 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">2</span>, <span class="at">behavior =</span> <span class="st">"Adaptive"</span>, <span class="at">fitness =</span> <span class="dv">4</span>, <span class="at">name =</span> <span class="st">"2"</span>)  </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>agent_3 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">3</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"3"</span>)  </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>agent_4 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">4</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">2</span>, <span class="at">name =</span> <span class="st">"4"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we print the agents we see a full listing of the <em>fields</em>, i.e., agent attributes, and agent methods, or functions that are part of the Agent class:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(agent_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Agent&gt;
+  Public:
+    add_neighbors: function (...) 
+    advance_behavior: function () 
+    advance_fitness: function () 
+    clone: function (deep = FALSE) 
+    degree: function () 
+    get_attribute: function (key) 
+    get_attributes: function () 
+    get_behavior: function () 
+    get_fitness: function () 
+    get_id: function () 
+    get_name: function () 
+    get_neighbors: function () 
+    get_next_behavior: function () 
+    get_next_fitness: function () 
+    initialize: function (id, name = NULL, behavior = "0", fitness = 0) 
+    remove_neighbors: function (...) 
+    set_attribute: function (key, value) 
+    set_attributes: function (attr_list) 
+    set_behavior: function (value) 
+    set_fitness: function (value) 
+    set_name: function (name) 
+    set_neighbors: function (nbrs) 
+    set_next_behavior: function (value) 
+    set_next_fitness: function (value) 
+  Private:
+    attributes: list
+    behavior_current: Adaptive
+    behavior_next: Adaptive
+    fitness_current: 4
+    fitness_next: 4
+    id: 2
+    name: 2
+    neighbors: Neighbors, R6</code></pre>
+</div>
+</div>
+<section id="create-a-social-network" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="create-a-social-network"><span class="header-section-number">2.2.1</span> Create a social network</h3>
+<p>To run agent-based models we often want to specify a social network to structure agent interactions. We use the <a href="https://r.igraph.org/"><code>igraph</code></a> library to create social networks, or in some cases we use <code>socmod</code> code. We can create networks directly as follows, using the <code>igraph::make_graph</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'igraph'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:purrr':
+
+    compose, simplify</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    as_data_frame, groups, union</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    decompose, spectrum</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:base':
+
+    union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create graph with formula syntax: 1 connected to 2, 3, 4; 3 connected to 4</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>socnet <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">make_graph</span>(<span class="sc">~</span> <span class="dv">1-2</span>, <span class="dv">1-3</span>, <span class="dv">1-4</span>, <span class="dv">3-2</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Vertex names are automatically assigned as character strings: "1", "2", etc.</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">V</span>(socnet)<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1" "2" "3" "4"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize network with base igraph plot.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(socnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="programming-intro_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="combine-agents-and-network-into-a-model" class="level3 page-columns page-full" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="combine-agents-and-network-into-a-model"><span class="header-section-number">2.2.2</span> Combine agents and network into a model</h3>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>agents <span class="ot">&lt;-</span> <span class="fu">list</span>(agent_1, agent_2, agent_3, agent_4)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>abm <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">graph =</span> socnet)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggnetplot</span>(abm<span class="sc">$</span><span class="fu">get_network</span>()) <span class="sc">+</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edges</span>(<span class="at">linewidth=</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_nodes</span>(<span class="at">color =</span> <span class="st">"#008566"</span>, <span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_nodelabel_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_blank</span>()   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="programming-intro_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div></div></div>
+</section>
+</section>
+<section id="r-programming-essentials" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="r-programming-essentials"><span class="header-section-number">2.3</span> R programming essentials</h2>
+<section id="basic-r-functions-iteration-control-flow-and-data-structures" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="basic-r-functions-iteration-control-flow-and-data-structures"><span class="header-section-number">2.3.1</span> Basic R: functions, iteration, control flow, and data structures</h3>
+</section>
+<section id="object-oriented-programming-in-r-with-r6" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="object-oriented-programming-in-r-with-r6"><span class="header-section-number">2.3.2</span> Object-oriented programming in R with R6</h3>
+</section>
+<section id="a-note-on-socmod-and-the-tidyverse" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="a-note-on-socmod-and-the-tidyverse"><span class="header-section-number">2.3.3</span> A note on <code>socmod</code> and the <em>tidyverse</em></h3>
+<p>The <a href="https://www.tidyverse.org/"><em>tidyverse</em></a> is an agglomeration of the <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a> data visualization library and several other related data analysis libraries. [<strong>tidyverse links:</strong> We make extensive use of the following <a href="https://www.tidyverse.org/"><em>tidyverse</em></a> libraries. One principle of the tidyverse is good documentation. Here are the libraries provided as hyperlinks that can help for reference or to understand more about how they work:</p>
+<ul>
+<li><p><em>yo</em></p></li>
+<li><p><em>whatup</em> .] The tidyverse toolkit was one of the strongest reasons for deciding to do our Agent-based Modeling for Sustainability in R. The tidyverse is popular among scientists and engineers, and many others. It provides a wealth of tools to be used in combination with one another for various data science tasks. The popular <code>ggplot2</code> provides a <em>grammar of graphics</em> where scientific plots are defined through summation of constituent parts, including diferent lines or marks corresponding to data values, labels for the ticks and axes, legend for the meaning of different line or marker styles, and so on. Other important packages from the tidyverse include:</p>
+<ul>
+<li><strong>purrr:</strong> tools for functional programming in R</li>
+<li><strong>dplyr:</strong> data manipulation and analysis using declarative syntax</li>
+<li><strong>tibble:</strong> a new version of data.frames customized for data science</li>
+</ul></li>
+</ul>
+<p>Other tidyverse tools include helpful functions for data cleaning and standardization across a wide range of data formats in order to apply statistical analyses. For example, the <code>readr</code> package reads multiple formats into <code>tibble</code>s. The <code>tidyr</code> provides tools for efficient data cleaning, supported by <code>stringr</code> and <code>lubridate</code> for dealing with strings (i.e., text data), dates, and times, which each have their own complications in data science where one has no control over the source data formatting. We, on the other hand, have total control over our data formatting since we ourselves simulate it, so we will not need to use these tools.</p>
+<ul>
+<li><code>socmod</code> adopts this tidyverse approach to programming quantitative analyses. Here is an example of how to use the <code>ggplot2</code> package to visualize the output of an agent-based model.</li>
+</ul>
+<p>First, let’s create and run an agent-based model of adaptation diffusion among individuals represented by a fully-connected network with population size 20. This could represent something like a large group discussion, or a small party, where some adaptation is being discussed. Assume that 10 of them do the Adaptive behavior, <span class="math inline">\(A\)</span>, and the rest do the Legacy behavior, <span class="math inline">\(L\)</span>. We initialize and run a single simulation trial for the model like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create agents.</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># agents &lt;- purrr::map</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="social-learning-models" class="level2 page-columns page-full" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="social-learning-models"><span class="header-section-number">2.4</span> Social learning models</h2>
+<section id="success-biased-learning" class="level3 page-columns page-full" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="success-biased-learning"><span class="header-section-number">2.4.1</span> Success-biased learning</h3>
+<p>Now that we’ve seen how to initialize an agent-based model, let’s make a cell with all the initialization steps together, then run the model using success-biased learning.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(socmod)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>make_example_learning_abm <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Focal agent.</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  agent_1 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">1</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"1"</span>)  </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Focal agent neighbors.</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  agent_2 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">2</span>, <span class="at">behavior =</span> <span class="st">"Adaptive"</span>, <span class="at">fitness =</span> <span class="dv">4</span>, <span class="at">name =</span> <span class="st">"2"</span>)  </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  agent_3 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">3</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"3"</span>)  </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  agent_4 <span class="ot">&lt;-</span> Agent<span class="sc">$</span><span class="fu">new</span>(<span class="dv">4</span>, <span class="at">behavior =</span> <span class="st">"Legacy"</span>, <span class="at">fitness =</span> <span class="dv">2</span>, <span class="at">name =</span> <span class="st">"4"</span>)  </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  agents <span class="ot">&lt;-</span> <span class="fu">list</span>(agent_1, agent_2, agent_3, agent_4)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  socnet <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="sc">~</span> <span class="dv">1-2</span>, <span class="dv">1-3</span>, <span class="dv">1-4</span>, <span class="dv">3-2</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  abm <span class="ot">&lt;-</span> AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">graph =</span> socnet)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (abm)</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>abm <span class="ot">&lt;-</span> <span class="fu">make_example_learning_abm</span>()</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>trial <span class="ot">&lt;-</span> <span class="fu">run_trial</span>(</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  abm, </span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">partner_selection =</span> success_bias_select_teacher,</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">interaction =</span> success_bias_interact, </span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">iterate =</span> iterate_learning_model,</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">stop =</span> <span class="dv">10</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect outputs. </span></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(trial<span class="sc">$</span><span class="fu">get_observations</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 44 × 4
+       t agent Behavior Fitness
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+ 1     0 1     Legacy         1
+ 2     0 2     Adaptive       4
+ 3     0 3     Legacy         1
+ 4     0 4     Legacy         2
+ 5     1 1     Legacy         2
+ 6     1 2     Legacy         1
+ 7     1 3     Adaptive       4
+ 8     1 4     Legacy         1
+ 9     2 1     Adaptive       4
+10     2 2     Adaptive       4
+# ℹ 34 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(trial<span class="sc">$</span><span class="fu">get_outcomes</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$adaptation_success
+[1] TRUE
+
+$fixation_steps
+[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot adoption of the Adaptive and Legacy behaviors over time.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>socmod<span class="sc">::</span><span class="fu">plot_adoption</span>(trial, <span class="at">behaviors =</span> <span class="fu">c</span>(<span class="st">"Adaptive"</span>, <span class="st">"Legacy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="no-row-height column-margin column-container"><div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="programming-intro_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div></div></div>
+<p>Wait, what’s going on here? Where did <code>success_bias_select_teacher</code>, <code>success_bias_interact</code>, and <code>iterate_learning_model</code> come from? They are also provided by the <code>socmod</code> package. The documentation for <code>socmod</code> is here: <a href="https://css4s.github.io/socmod" class="uri">https://css4s.github.io/socmod</a>, with this example of success-biased learning here: <a href="https://css4s.github.io/socmod/#success-biased-adaptive-learning" class="uri">https://css4s.github.io/socmod/#success-biased-adaptive-learning</a>.</p>
+</section>
+<section id="frequency-biased-learning" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="frequency-biased-learning"><span class="header-section-number">2.4.2</span> Frequency-biased learning</h3>
+<p>In addition to providing functions for success-biased learning, <code>socmod</code> also provides frequency-biased learning functions. To use frequency-biased learning in a single trial, use `run_trial` like so:</p>
+</section>
+</section>
+<section id="understanding-r-data-types-and-functions" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="understanding-r-data-types-and-functions"><span class="header-section-number">2.5</span> Understanding R Data Types and Functions</h2>
+<section id="values-variables-lists-and-vectors" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="values-variables-lists-and-vectors"><span class="header-section-number">2.5.1</span> Values, Variables, Lists, and Vectors</h3>
+<p>In R, everything is built on top of a few basic structures:</p>
+<ul>
+<li><p><strong>Values</strong>: basic data like numbers (<code>1</code>, <code>3.14</code>), text (<code>"hello"</code>), or logicals (<code>TRUE</code>, <code>FALSE</code>).</p></li>
+<li><p><strong>Variables</strong>: names you assign to values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">"Alice"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><strong>Vectors</strong>: ordered collections of values of the same type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><strong>Lists</strong>: collections of elements that can be of mixed type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">id =</span> <span class="dv">1</span>, <span class="at">name =</span> <span class="st">"Alice"</span>, <span class="at">scores =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="from-vectors-to-data-frames-and-tibbles" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="from-vectors-to-data-frames-and-tibbles"><span class="header-section-number">2.5.2</span> From Vectors to Data Frames and Tibbles</h3>
+<p>You can combine vectors into <strong>data frames</strong>, where each vector becomes a column. These are like spreadsheets in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>), <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">85</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We often prefer <strong>tibbles</strong> (from the <code>tibble</code> package in the <code>tidyverse</code>) for modern workflows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'tibble'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:igraph':
+
+    as_data_frame</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>), <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">85</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>More on this in later lectures.</p>
+</section>
+</section>
+<section id="encapsulation-in-agent-based-modeling" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="encapsulation-in-agent-based-modeling"><span class="header-section-number">2.6</span> Encapsulation in agent-based modeling</h2>
+<p>Agent-based modeling depends on <em>encapsulation</em>, meaning Serendipitously, such specification helps us do our job as scientists and engineers here is to manage complexity in social systems to clarify mechanisms that support or inhibit adaptation.</p>
+<p>Agents are created as an <em>instance</em> of the <a href="https://css4s.github.io/socmod/reference/Agent.html"><code>socmod Agent *class*</code></a>, which is a comptuer science term for a template for a collection of data and functions. When we create an instance of a class. In R, classes are defined using the <code>R6</code> package, which implements an *object-oriented for R, R was not designed for object-oriented programming no built-in library R6 is an object-oriented system for R that allows for defining classes and methods in a way similar to Python. This gives you more explicit control over encapsulation and inheritance compared to R’s S3/S4 systems.</p>
+<p>Encapsulation in computer code helps us avoid unnecessary complexity so we can focus on social behavioral complexity that complicates designing sustainability interventions and understanding social behavior. Encapsulation reduces repetition, makes code easier to debug and understand, and encourages modular, clean design. The primary focus of this course is to design interventions to facilitate the widespread adoption of sustainable behaviors using lessons and tools from cognitive and social science. But lessons from cognitive and social science can help us do our research and intervention design jobs better by guiding us to create more ergonomic tools, meaning tools that are easier to quickly pick up and use. We encapsulate computer code, then, because we know, from common sense supported by widely-replicated science, that humans tend to segment information into sets of ~2-8 items for relatively simple subjects, or perhaps ~2-5 things for more complex subjects like ours.</p>
+<p>We’ll focus here on two techniques for encapsulation: <em>functions</em> and <em>classes</em>, presented in that order in the following subsections. <em>Functions</em> are reusable chunks of code that perform a specific task. They take inputs (called <em>arguments</em>), perform operations on them, and return outputs. <em>Classes</em> are collections of <em>data</em> and <em>functions</em> (i.e., <em>fields</em> and <em>methods</em>, respectively) about some discrete entity. In <code>socmod</code>, we have the <a href="https://css4s.github.io/socmod/reference/Agent.html"><code>Agent</code></a> and <a href="https://css4s.github.io/socmod/reference/AgentBasedModel.html"><code>AgentBasedModel</code></a> classes. We create these and other objects in R using the <code>R6</code> package.</p>
+<section id="functions" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.6.1</span> Functions</h3>
+<p>Functions let us encapsulate <em>logic</em> and processes for their reuse.<br>
+You define them like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">3</span>)  <span class="co"># returns 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+</section>
+<section id="classes" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="classes"><span class="header-section-number">2.6.2</span> Classes</h3>
+</section>
+</section>
+<section id="functional-programming-style" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="functional-programming-style"><span class="header-section-number">2.7</span> Functional programming style</h2>
+<p><em>Functional programming</em> is an approach to defining behavior and dealing with transformations of multidimensional data. In functional programming, functions are first-class objects, meaning they can be passed to other functions and arguments. Such functions are called higher-order functions.</p>
+</section>
+<section id="social-networks" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="social-networks"><span class="header-section-number">2.8</span> Social networks</h2>
+<section id="igraph" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="igraph">igraph</h3>
+</section>
+<section id="deterministic-networks" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="deterministic-networks"><span class="header-section-number">2.8.1</span> Deterministic networks</h3>
+</section>
+<section id="stochastic-networks" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="stochastic-networks"><span class="header-section-number">2.8.2</span> Stochastic networks</h3>
+<section id="homophily-networks" class="level4" data-number="2.8.2.1">
+<h4 data-number="2.8.2.1" class="anchored" data-anchor-id="homophily-networks"><span class="header-section-number">2.8.2.1</span> Homophily networks</h4>
+</section>
+<section id="core-periphery-networks" class="level4" data-number="2.8.2.2">
+<h4 data-number="2.8.2.2" class="anchored" data-anchor-id="core-periphery-networks"><span class="header-section-number">2.8.2.2</span> Core-periphery networks</h4>
+</section>
+<section id="the-friendship-paradox" class="level4" data-number="2.8.2.3">
+<h4 data-number="2.8.2.3" class="anchored" data-anchor-id="the-friendship-paradox"><span class="header-section-number">2.8.2.3</span> The friendship “paradox”</h4>
+<p><span class="citation" data-cites="Feld1991">Feld (<a href="references.html#ref-Feld1991" role="doc-biblioref">1991</a>)</span> uses the example friendship network of girls in Marketville to demonstrate the friendship paradox. Because of the friendship paradox’s potential powerful benefit for sustainability interventions, it is available via socmod like so:</p>
+<div class="cell" data-number-lines="true">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Coleman/Feld network as a ggnetwork, converting from igraph.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggnetwork)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(socmod)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>fnet <span class="ot">&lt;-</span> <span class="fu">get_feld_1991_network</span>()</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>components_vec <span class="ot">&lt;-</span> <span class="fu">components</span>(fnet)<span class="sc">$</span>membership</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert igraph to ggnetwork...</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ggfnet &lt;- </span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>ggfnet <span class="ot">&lt;-</span> <span class="fu">ggnetwork</span>(fnet, <span class="at">layout =</span> <span class="fu">layout_with_fr</span>(fnet, <span class="at">niter =</span> <span class="dv">200</span>, <span class="at">area =</span> <span class="dv">50</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add a column for component membership...</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">component =</span> forcats<span class="sc">::</span><span class="fu">as_factor</span>(components_vec[name]))</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># and create network plot where nodes are colored by component.</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(ggfnet, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">xend=</span>xend, <span class="at">yend=</span>yend)) <span class="sc">+</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edges</span>(<span class="at">linewidth =</span> <span class="fl">0.7</span>, <span class="at">color=</span><span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_nodes</span>(<span class="fu">aes</span>(<span class="at">color =</span> component), <span class="at">size =</span> <span class="fl">6.5</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_nodetext</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_blank</span>()</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-marketville" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-marketville-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/clipboard-3104143379.png" class="img-fluid figure-img" width="1000">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-marketville-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Marketville girls social networks loaded from the `socmod` library (Figure 2 of Feld, 1991, c.f. Coleman 1961).
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="agent-based-model-analysis" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="agent-based-model-analysis"><span class="header-section-number">2.9</span> Agent-based model analysis</h2>
+<section id="agents" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="agents"><span class="header-section-number">2.9.1</span> Agents</h3>
+</section>
+<section id="agent-based-models" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="agent-based-models"><span class="header-section-number">2.9.2</span> Agent-based models</h3>
+</section>
+<section id="computational-experiments" class="level3" data-number="2.9.3">
+<h3 data-number="2.9.3" class="anchored" data-anchor-id="computational-experiments"><span class="header-section-number">2.9.3</span> Computational experiments</h3>
+</section>
+<section id="data-analysis" class="level3" data-number="2.9.4">
+<h3 data-number="2.9.4" class="anchored" data-anchor-id="data-analysis"><span class="header-section-number">2.9.4</span> Data analysis</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>make_florentine_seed_model <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">seed_families =</span> <span class="fu">c</span>(<span class="st">"Medici"</span>),</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">adaptive_fitness =</span> <span class="fl">1.2</span>,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">legacy_fitness =</span> <span class="dv">1</span>,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">graph =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(graph)) {</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"netrankr"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">"Please install the 'netrankr' package to access the Florentine families network."</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">"florentine_m"</span>, <span class="at">package =</span> <span class="st">"netrankr"</span>, <span class="at">envir =</span> <span class="fu">environment</span>())</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    graph <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">delete_vertices</span>(florentine_m, <span class="fu">which</span>(<span class="fu">degree</span>(florentine_m) <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  nodes <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">V</span>(graph)<span class="sc">$</span>name</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  agents <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(nodes, <span class="cf">function</span>(family) {</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    behavior <span class="ot">&lt;-</span> <span class="cf">if</span> (family <span class="sc">%in%</span> seed_families) <span class="st">"Adaptive"</span> <span class="cf">else</span> <span class="st">"Legacy"</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    fitness <span class="ot">&lt;-</span> <span class="cf">if</span> (behavior <span class="sc">==</span> <span class="st">"Adaptive"</span>) adaptive_fitness <span class="cf">else</span> legacy_fitness</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    Agent<span class="sc">$</span><span class="fu">new</span>(<span class="at">id =</span> family, <span class="at">name =</span> family, <span class="at">behavior =</span> behavior, <span class="at">fitness =</span> fitness)</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>  AgentBasedModel<span class="sc">$</span><span class="fu">new</span>(<span class="at">agents =</span> agents, <span class="at">graph =</span> graph)</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_trials</span>(<span class="dv">50</span>, <span class="cf">function</span>() <span class="fu">make_florentine_seed_model</span>(<span class="fu">c</span>(<span class="st">"Medici"</span>, <span class="st">"Pazzi"</span>)), <span class="at">label =</span> <span class="st">"Medici + Pazzi"</span>, <span class="at">stop =</span> fixated),</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_trials</span>(<span class="dv">50</span>, <span class="cf">function</span>() <span class="fu">make_florentine_seed_model</span>(<span class="fu">c</span>(<span class="st">"Medici"</span>, <span class="st">"Strozzi"</span>)), <span class="at">label =</span> <span class="st">"Medici + Strozzi"</span>, <span class="at">stop =</span> fixated)</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> <span class="fu">summarise_adoption</span>(trials)</span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>summary_by_label <span class="ot">&lt;-</span> <span class="fu">summarise_by_label</span>(summary)</span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_summary(summary)</span></span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a><span class="co"># summary_by_label</span></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggplot2)</span></span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="co"># library(dplyr)</span></span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Summarize trial-level outcomes by label</span></span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>trial_summary <span class="ot">&lt;-</span> <span class="fu">summarise_by_label</span>(summary)</span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Join success rates into summary and update facet labels</span></span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>summary_labeled <span class="ot">&lt;-</span> summary <span class="sc">%&gt;%</span></span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(trial_summary, <span class="at">by =</span> <span class="st">"label"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_full =</span> <span class="fu">paste0</span>(label, <span class="st">" ("</span>, <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> success_rate), <span class="st">"% success)"</span>)</span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Compute mean curves for overlay</span></span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>mean_lines <span class="ot">&lt;-</span> summary_labeled <span class="sc">%&gt;%</span></span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(label_full, t, Behavior) <span class="sc">%&gt;%</span></span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_count =</span> <span class="fu">mean</span>(count), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build plot</span></span>
+<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary_labeled, <span class="fu">aes</span>(<span class="at">x =</span> t, <span class="at">y =</span> count, <span class="at">color =</span> Behavior)) <span class="sc">+</span></span>
+<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Light individual trial lines</span></span>
+<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="fu">interaction</span>(trial, Behavior)), <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add bold mean lines</span></span>
+<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> mean_lines, <span class="fu">aes</span>(<span class="at">x =</span> t, <span class="at">y =</span> mean_count, <span class="at">color =</span> Behavior),</span>
+<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a>            <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-62"><a href="#cb43-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># # Add text for success rate in corner</span></span>
+<span id="cb43-63"><a href="#cb43-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_text(</span></span>
+<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   data = trial_summary,</span></span>
+<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   aes(x = 0, y = max(summary$count), </span></span>
+<span id="cb43-66"><a href="#cb43-66" aria-hidden="true" tabindex="-1"></a>  <span class="co">#       label = paste0(round(100 * success_rate), "% success")),</span></span>
+<span id="cb43-67"><a href="#cb43-67" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   color = "black", hjust = 0, vjust = 1.5,</span></span>
+<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   inherit.aes = FALSE</span></span>
+<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ) +</span></span>
+<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
+<span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> label_full) <span class="sc">+</span></span>
+<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Time step"</span>) <span class="sc">+</span></span>
+<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Agent count"</span>) <span class="sc">+</span></span>
+<span id="cb43-74"><a href="#cb43-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb43-75"><a href="#cb43-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="programming-intro_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Feld1991" class="csl-entry" role="listitem">
+Feld, Scott L. 1991. <span>“<span class="nocase">Why your friends have more friends than you do</span>.”</span> <em>American Journal of Sociology</em> 96 (6). <a href="https://doi.org/10.1145/2248371.2248376">https://doi.org/10.1145/2248371.2248376</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -814,8 +1554,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./networks.html" class="pagination-link" aria-label="Social networks">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Social networks</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./social-science.html" class="pagination-link" aria-label="Social science for sustainability modeling">
+        <span class="nav-page-text">Social science for sustainability modeling</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
