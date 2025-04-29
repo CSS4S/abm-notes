@@ -75,10 +75,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-461959a8d42c1557bf4d45ac26041a3a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b2ac4f073dc9ae3e7c4033d9166d02d9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-461959a8d42c1557bf4d45ac26041a3a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-7dbf4b14307aff8a65c0dc14a00daad4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-ed075a130b7a5ea6520bcd1a9ca07d37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-7dbf4b14307aff8a65c0dc14a00daad4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -255,7 +257,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         changeGiscusTheme();
       }
     };
-    const darkModeDefault = true;
+    const darkModeDefault = false;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -830,7 +834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>footballer <span class="ot">&lt;-</span> Footballer<span class="sc">$</span><span class="fu">new</span>(<span class="at">accuracy =</span> <span class="fl">0.5</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>footballer<span class="sc">$</span><span class="fu">scored_goal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(purrr::map_vec(1:10, \(.) p$scored_goal()))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -896,18 +900,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Play three matches.</span></span>
 <span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="fu">play_match</span>(whales, squirrels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tie game!
-Whales :  4     Squirrels :  4 </code></pre>
+<pre><code>Whales wins!!!
+Whales :  4     Squirrels :  2 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">play_match</span>(squirrels, whales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Squirrels wins!!!
-Squirrels :  5     Whales :  0 </code></pre>
+<pre><code>Whales wins!!!
+Squirrels :  2     Whales :  5 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">play_match</span>(squirrels, whales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Squirrels wins!!!
-Squirrels :  3     Whales :  2 </code></pre>
+Squirrels :  5     Whales :  3 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print how many games each time won.</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">After three games..."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">The Whales have won"</span>, </span>
@@ -915,14 +919,26 @@ Squirrels :  3     Whales :  2 </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 After three games... 
-The Whales have won 0 games and the Squirrels have won 2</code></pre>
+The Whales have won 2 games and the Squirrels have won 1</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="agent-based-models-of-social-behavior" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="agent-based-models-of-social-behavior"><span class="header-section-number">2.4</span> Agent-based models of social behavior</h2>
-<p>Here we develop our first agent-based models of social behavior. We’ll start small, with the following four-household network of solar panel electrification using only success-biased learning. Then we’ll do a detailed comparison of different social learning strategies with different parameterizations.</p>
+<p>Here we develop our first agent-based models of social behavior. We’ll start small, with the following four-household network of solar panel electrification using only success-biased learning (<a href="#fig-four-agent-example" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>). Then we’ll do a detailed comparison of different social learning strategies with different parameterizations.</p>
+<div id="fig-four-agent-example" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-four-agent-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/four-agent-example.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-four-agent-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Example social network and sustainable adaptation diffusion problem.
+</figcaption>
+</figure>
+</div>
+<p>In the example, agent 2 has adopted rooftop solar. It has some adaptive fitness, which can be thought of as the financial gain from adopting a sustainable, adaptive behavior. We can directly create the social network using <code>igraph::make_graph()</code> then set it as the model’s social network, along with setting the learning strategy to be contagion learning.</p>
+<p>The <code>adoption_rate</code> parameter specifies how likely another agent is to adopt the adaptive behavior when exposed to it. The <code>drop_rate</code> is how likely an agent doing the adaptive behavior is to stop doing it and revert to the non-adaptive behavior.</p>
 <section id="example-1-time-series-of-adaptation-diffusion" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="example-1-time-series-of-adaptation-diffusion"><span class="header-section-number">2.4.1</span> Example 1: Time series of adaptation diffusion</h3>
 <div class="cell">
@@ -940,7 +956,7 @@ The Whales have won 0 games and the Squirrels have won 2</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="technical-intro_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="288"></p>
+<p><img src="technical-intro_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="456"></p>
 </figure>
 </div>
 </div>
@@ -960,7 +976,7 @@ The Whales have won 0 games and the Squirrels have won 2</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="technical-intro_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="552"></p>
+<p><img src="technical-intro_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="456"></p>
 </figure>
 </div>
 </div>
