@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -398,23 +418,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#primer-on-interventions-lecture-3-10-minutes-lecture-4-review-5-minutes" id="toc-primer-on-interventions-lecture-3-10-minutes-lecture-4-review-5-minutes" class="nav-link active" data-scroll-target="#primer-on-interventions-lecture-3-10-minutes-lecture-4-review-5-minutes"><span class="header-section-number">3.1</span> Primer on interventions (Lecture 3 10 minutes, Lecture 4 review 5 minutes)</a></li>
-  <li><a href="#comparing-seeding-strategies-for-interventions-lecture-3-april-7-2025" id="toc-comparing-seeding-strategies-for-interventions-lecture-3-april-7-2025" class="nav-link" data-scroll-target="#comparing-seeding-strategies-for-interventions-lecture-3-april-7-2025"><span class="header-section-number">3.2</span> Comparing seeding strategies for interventions (Lecture 3, April 7, 2025)</a>
+  <li><a href="#primer-on-interventions" id="toc-primer-on-interventions" class="nav-link active" data-scroll-target="#primer-on-interventions"><span class="header-section-number">3.1</span> Primer on interventions</a></li>
+  <li><a href="#comparing-seeding-strategies-for-interventions" id="toc-comparing-seeding-strategies-for-interventions" class="nav-link" data-scroll-target="#comparing-seeding-strategies-for-interventions"><span class="header-section-number">3.2</span> Comparing seeding strategies for interventions</a>
   <ul class="collapse">
-  <li><a href="#motivation-10-minutes" id="toc-motivation-10-minutes" class="nav-link" data-scroll-target="#motivation-10-minutes"><span class="header-section-number">3.2.1</span> Motivation (10 minutes)</a></li>
-  <li><a href="#network-models-and-structure-1025-minutes" id="toc-network-models-and-structure-1025-minutes" class="nav-link" data-scroll-target="#network-models-and-structure-1025-minutes"><span class="header-section-number">3.2.2</span> Network models and structure (10–25 minutes)</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation"><span class="header-section-number">3.2.1</span> Motivation</a></li>
+  <li><a href="#network-models-and-structure" id="toc-network-models-and-structure" class="nav-link" data-scroll-target="#network-models-and-structure"><span class="header-section-number">3.2.2</span> Network models and structure</a></li>
   <li><a href="#from-structure-to-simulation" id="toc-from-structure-to-simulation" class="nav-link" data-scroll-target="#from-structure-to-simulation"><span class="header-section-number">3.2.3</span> From structure to simulation</a></li>
   </ul></li>
   <li><a href="#the-general-diffusion-model" id="toc-the-general-diffusion-model" class="nav-link" data-scroll-target="#the-general-diffusion-model"><span class="header-section-number">3.3</span> The general diffusion model</a></li>
   <li><a href="#network-structure-patterns-that-shape-and-constrain-adaptation" id="toc-network-structure-patterns-that-shape-and-constrain-adaptation" class="nav-link" data-scroll-target="#network-structure-patterns-that-shape-and-constrain-adaptation"><span class="header-section-number">3.4</span> Network structure patterns that shape and constrain adaptation</a>
   <ul class="collapse">
   <li><a href="#the-good-and-the-bad-of-social-structure-and-long-range-ties" id="toc-the-good-and-the-bad-of-social-structure-and-long-range-ties" class="nav-link" data-scroll-target="#the-good-and-the-bad-of-social-structure-and-long-range-ties"><span class="header-section-number">3.4.1</span> The good and the bad of social structure and long-range ties</a></li>
-  <li><a href="#homophily-choice-and-induced-10-minutes" id="toc-homophily-choice-and-induced-10-minutes" class="nav-link" data-scroll-target="#homophily-choice-and-induced-10-minutes"><span class="header-section-number">3.4.2</span> Homophily: choice and induced (10 minutes)</a></li>
-  <li><a href="#asymmetric-homophily-and-diffusion-10-minutes" id="toc-asymmetric-homophily-and-diffusion-10-minutes" class="nav-link" data-scroll-target="#asymmetric-homophily-and-diffusion-10-minutes"><span class="header-section-number">3.4.3</span> Asymmetric homophily and diffusion (10 minutes)</a></li>
-  <li><a href="#core-periphery-structure-10-minutes" id="toc-core-periphery-structure-10-minutes" class="nav-link" data-scroll-target="#core-periphery-structure-10-minutes"><span class="header-section-number">3.4.4</span> Core-periphery structure (10 minutes)</a></li>
-  <li><a href="#when-ties-break-cumulative-loss-5-minutes" id="toc-when-ties-break-cumulative-loss-5-minutes" class="nav-link" data-scroll-target="#when-ties-break-cumulative-loss-5-minutes"><span class="header-section-number">3.4.5</span> When ties break: cumulative loss (5 minutes)</a></li>
-  <li><a href="#modeling-implications-5-minutes" id="toc-modeling-implications-5-minutes" class="nav-link" data-scroll-target="#modeling-implications-5-minutes"><span class="header-section-number">3.4.6</span> Modeling implications (5 minutes)</a></li>
-  <li><a href="#conclusion-and-transition-5-minutes" id="toc-conclusion-and-transition-5-minutes" class="nav-link" data-scroll-target="#conclusion-and-transition-5-minutes"><span class="header-section-number">3.4.7</span> Conclusion and transition (5 minutes)</a></li>
+  <li><a href="#homophily-choice-and-induced" id="toc-homophily-choice-and-induced" class="nav-link" data-scroll-target="#homophily-choice-and-induced"><span class="header-section-number">3.4.2</span> Homophily: choice and induced</a></li>
+  <li><a href="#asymmetric-homophily-and-diffusion" id="toc-asymmetric-homophily-and-diffusion" class="nav-link" data-scroll-target="#asymmetric-homophily-and-diffusion"><span class="header-section-number">3.4.3</span> Asymmetric homophily and diffusion</a></li>
+  <li><a href="#core-periphery-structure" id="toc-core-periphery-structure" class="nav-link" data-scroll-target="#core-periphery-structure"><span class="header-section-number">3.4.4</span> Core-periphery structure</a></li>
+  <li><a href="#when-ties-break-cumulative-loss" id="toc-when-ties-break-cumulative-loss" class="nav-link" data-scroll-target="#when-ties-break-cumulative-loss"><span class="header-section-number">3.4.5</span> When ties break: cumulative loss</a></li>
+  <li><a href="#modeling-implications" id="toc-modeling-implications" class="nav-link" data-scroll-target="#modeling-implications"><span class="header-section-number">3.4.6</span> Modeling implications</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3.4.7</span> Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -443,8 +463,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>In the context of sustainability and climate adaptation, behavior change often depends not only on individual decisions but also on the social networks through which information and behaviors spread. This chapter examines how the structure of social networks influences the diffusion of adaptations—behaviors or practices that help people adjust to new risks or environmental conditions.</p>
-<section id="primer-on-interventions-lecture-3-10-minutes-lecture-4-review-5-minutes" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="primer-on-interventions-lecture-3-10-minutes-lecture-4-review-5-minutes"><span class="header-section-number">3.1</span> Primer on interventions (Lecture 3 10 minutes, Lecture 4 review 5 minutes)</h2>
+<section id="primer-on-interventions" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="primer-on-interventions"><span class="header-section-number">3.1</span> Primer on interventions</h2>
 <ul>
 <li>Recall that a <em>sustainability intervention</em> is an effort to promote some sustainable behavior or set of behaviors through education, training, or other means.</li>
 <li>In order to simulate interventions, we must develop a sub-model for interventions, starting with classification.
@@ -454,16 +474,16 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="comparing-seeding-strategies-for-interventions-lecture-3-april-7-2025" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="comparing-seeding-strategies-for-interventions-lecture-3-april-7-2025"><span class="header-section-number">3.2</span> Comparing seeding strategies for interventions (Lecture 3, April 7, 2025)</h2>
-<section id="motivation-10-minutes" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="motivation-10-minutes"><span class="header-section-number">3.2.1</span> Motivation (10 minutes)</h3>
+<section id="comparing-seeding-strategies-for-interventions" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="comparing-seeding-strategies-for-interventions"><span class="header-section-number">3.2</span> Comparing seeding strategies for interventions</h2>
+<section id="motivation" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">3.2.1</span> Motivation</h3>
 <p>We begin with a concrete example: health behavior interventions in rural Honduran villages. In a study by Aral and Christakis, the researchers used detailed network data to test whether targeting well-connected individuals could increase the spread of health-promoting behaviors. The intervention succeeded not because it directly reached everyone, but because the network structure amplified its effects.</p>
 <p>This example also serves as the foundation for an agent-based modeling assignment in which we will explain how <em>computational experiments</em> help us understand and predict the effect of different seeding and other intervention strategies.</p>
-<p>We will close by contrasting seeding strategies that ignore social structure, as in the <span class="citation" data-cites="Airaldi2024">(<a href="references.html#ref-Airaldi2024" role="doc-biblioref"><strong>Airaldi2024?</strong></a>)</span> work reviewed above, with those that leverage social structure.</p>
+<p>We will close by contrasting seeding strategies that ignore social structure, as in <span class="citation" data-cites="Airoldi2024">Airoldi and Christakis (<a href="references.html#ref-Airoldi2024" role="doc-biblioref">2024</a>)</span>, with those that leverage social structure, like <span class="citation" data-cites="Turner2023">Turner et al. (<a href="references.html#ref-Turner2023" role="doc-biblioref">2023</a>)</span>.</p>
 </section>
-<section id="network-models-and-structure-1025-minutes" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="network-models-and-structure-1025-minutes"><span class="header-section-number">3.2.2</span> Network models and structure (10–25 minutes)</h3>
+<section id="network-models-and-structure" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="network-models-and-structure"><span class="header-section-number">3.2.2</span> Network models and structure</h3>
 <p>To understand why structure matters, we explore a series of increasingly complex network models. We begin with <strong>deterministic models</strong>:</p>
 <ul>
 <li><strong>Ring networks</strong>, where each node is connected to a fixed number of neighbors.</li>
@@ -504,8 +524,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-good-and-the-bad-of-social-structure-and-long-range-ties" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="the-good-and-the-bad-of-social-structure-and-long-range-ties"><span class="header-section-number">3.4.1</span> The good and the bad of social structure and long-range ties</h3>
 </section>
-<section id="homophily-choice-and-induced-10-minutes" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="homophily-choice-and-induced-10-minutes"><span class="header-section-number">3.4.2</span> Homophily: choice and induced (10 minutes)</h3>
+<section id="homophily-choice-and-induced" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="homophily-choice-and-induced"><span class="header-section-number">3.4.2</span> Homophily: choice and induced</h3>
 <p><strong>Homophily</strong> is the tendency for similar individuals to associate. We distinguish two forms:</p>
 <ul>
 <li><strong>Choice homophily</strong>, where individuals actively prefer similar partners;</li>
@@ -520,23 +540,23 @@ ul.task-list li input[type="checkbox"] {
 <p>These examples show that homophily can inhibit or support adaptation, depending on the context.</p>
 <p>We also discuss experimental results from Centola (2010, 2011), which show that homophilous networks can outperform random ones in spreading health behaviors—especially when reinforcement and social learning are important.</p>
 </section>
-<section id="asymmetric-homophily-and-diffusion-10-minutes" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="asymmetric-homophily-and-diffusion-10-minutes"><span class="header-section-number">3.4.3</span> Asymmetric homophily and diffusion (10 minutes)</h3>
+<section id="asymmetric-homophily-and-diffusion" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="asymmetric-homophily-and-diffusion"><span class="header-section-number">3.4.3</span> Asymmetric homophily and diffusion</h3>
 <p>In some cases, homophily is <strong>asymmetric</strong>. One group (often the minority) is more exposed to the other than vice versa. In the “Minority Incubator, Majority Reservoir” model, this asymmetry allows minority-originating adaptations to diffuse outward more effectively.</p>
 <p>This structural asymmetry isn’t necessarily intentional—it can emerge from how connections are formed. Yet it has real implications for diffusion, visibility, and adaptation speed.</p>
 </section>
-<section id="core-periphery-structure-10-minutes" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="core-periphery-structure-10-minutes"><span class="header-section-number">3.4.4</span> Core-periphery structure (10 minutes)</h3>
+<section id="core-periphery-structure" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="core-periphery-structure"><span class="header-section-number">3.4.4</span> Core-periphery structure</h3>
 <p>In a <strong>core-periphery</strong> network, a dense core of well-connected individuals is surrounded by a sparsely connected periphery. This structure supports fast diffusion through the core but may limit peripheral influence.</p>
 <p>The South Pacific Island case provides an example: core-periphery organization enabled stable adaptation strategies under conditions of uncertainty and risk. These designs may emerge deliberately or organically.</p>
 </section>
-<section id="when-ties-break-cumulative-loss-5-minutes" class="level3" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="when-ties-break-cumulative-loss-5-minutes"><span class="header-section-number">3.4.5</span> When ties break: cumulative loss (5 minutes)</h3>
+<section id="when-ties-break-cumulative-loss" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="when-ties-break-cumulative-loss"><span class="header-section-number">3.4.5</span> When ties break: cumulative loss</h3>
 <p>To illustrate the consequences of broken connections, we turn to Henrich’s study of tool diversity in Oceania. When long-range maritime ties between islands broke down, isolated communities lost complex technologies.</p>
 <p>This example highlights how network fragmentation can halt or reverse cumulative cultural evolution—a key dynamic in adaptation and innovation.</p>
 </section>
-<section id="modeling-implications-5-minutes" class="level3" data-number="3.4.6">
-<h3 data-number="3.4.6" class="anchored" data-anchor-id="modeling-implications-5-minutes"><span class="header-section-number">3.4.6</span> Modeling implications (5 minutes)</h3>
+<section id="modeling-implications" class="level3" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="modeling-implications"><span class="header-section-number">3.4.6</span> Modeling implications</h3>
 <p>Using the same agent-based model, we simulate diffusion on homophilous and core-periphery networks. Holding cognition and social behavior constant, we find:</p>
 <ul>
 <li>Some structures accelerate diffusion;</li>
@@ -545,12 +565,20 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>These outcomes underscore the importance of network design in policy, development, and sustainability work.</p>
 </section>
-<section id="conclusion-and-transition-5-minutes" class="level3" data-number="3.4.7">
-<h3 data-number="3.4.7" class="anchored" data-anchor-id="conclusion-and-transition-5-minutes"><span class="header-section-number">3.4.7</span> Conclusion and transition (5 minutes)</h3>
+<section id="conclusion" class="level3" data-number="3.4.7">
+<h3 data-number="3.4.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.4.7</span> Conclusion</h3>
 <p>Social networks don’t just transmit information—they shape who hears what, when, and from whom. Homophily and core-periphery structures are not marginal—they are central to how behaviors spread, how inequality persists, and how sustainability strategies succeed or fail.</p>
 <p>In the next chapter and lecture, we extend this framework to include <strong>identity</strong>, <strong>polarization</strong>, and the role of <strong>group norms</strong>. These additional dynamics interact with the structures introduced here—and complicate efforts to promote coordination, learning, or fairness across diverse populations.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Airoldi2024" class="csl-entry" role="listitem">
+Airoldi, Edoardo M., and Nicholas A. Christakis. 2024. <span>“<span class="nocase">Induction of social contagion for diverse outcomes in structured experiments in isolated villages</span>.”</span> <em>Science</em> 384 (6695). <a href="https://doi.org/10.1126/science.adi5147">https://doi.org/10.1126/science.adi5147</a>.
+</div>
+<div id="ref-Turner2023" class="csl-entry" role="listitem">
+Turner, Matthew A., Alyson L. Singleton, Mallory J. Harris, Ian Harryman, Cesar Augusto Lopez, Ronan Forde Arthur, Caroline Muraida, and James Holland Jones. 2023. <span>“<span class="nocase">Minority-group incubators and majority-group reservoirs support the diffusion of climate change adaptations</span>.”</span> <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 378 (1889). <a href="https://doi.org/10.1098/rstb.2022.0401">https://doi.org/10.1098/rstb.2022.0401</a>.
+</div>
+</div>
 </section>
 </section>
 

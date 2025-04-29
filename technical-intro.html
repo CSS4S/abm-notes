@@ -489,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In agent-based modeling, we create software representations of simulated people, i.e.&nbsp;<em>agents</em>, or other interacting entities, including the agents’ environment. <em>Object-oriented programming</em> is the natural choice for software design in this case because it provides a structure for defining custom <em>objects</em> like socially interacting agents. An <em>object</em> is one bit of data that could be a number or character type, but could also be something more complicated. In object-oriented programming we define custom <em>classes</em> that specify various data <em>fields</em> and function <em>methods</em> for maintaining and modifying the state of objects. The fields and methods of a class therefore are sets of related data and functions to represent things in the world.</p>
 <p>To summarize, objects are a way to track and modify the state of different software entities. We can create simulations of real-world systems by defining custom object types called classes whose state and behaviors are modeled on relevant real-world features and behaviors.</p>
 <p>In <code>socmod</code>, we define custom R objects for agent-based models of social behavior using the <code>R6Class</code> method that creates a new object type, i.e., a new <em>class</em>. We use tidy-style functional programming where helpful to represent model features and dynamics.</p>
-<p>In the remainder of this chapter, I will first review variable assignment and data structures in R including vectors, lists, data.frames, and tibbles. We then review relevant topics in functional programming, then demonstrate how to create custom classes in R with the library <a href="https://r6.r-lib.org/">R6</a>. This tutorial then closes with a demonstration of a simple four-agent agent-based model of social behavior, kept simple to highlight the functional and object-oriented design patterns in <code>socmod</code>, representing <code>Agent</code>, an <code>AgentBasedModel</code>, and <code>Trial</code>classes defined using the <a href="https://r6.r-lib.org/reference/is.R6.html?q=r6class#ref-usage"><code>R6Class</code> function</a>.</p>
+<p>In the remainder of this chapter, I will first review variable assignment and data structures in R including vectors, lists, data.frames, and tibbles. We then review relevant topics in functional programming, then demonstrate how to create custom classes in R with the library <a href="https://r6.r-lib.org/">R6</a>. This tutorial then closes with a demonstration of a simple four-agent agent-based model of social behavior, kept simple to highlight the functional and object-oriented design patterns in <code>socmod</code>, representing <code>Agent</code>, an <code>AgentBasedModel</code>, and <code>Trial</code>classes defined using the <a href="https://r6.r-lib.org/reference/R6Class.html"><code>R6Class</code> function</a>.</p>
 <section id="data-collection-types-in-r" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="data-collection-types-in-r"><span class="header-section-number">2.1</span> Data collection types in R</h2>
 <p>In R, there is a hierarchy of data collection types that are necessary to know about for functional programming, which often involves applying a function across every element of a collection of data. Data collections include vectors, lists, data.frames, and tibbles, which we’ll cover here.</p>
@@ -834,7 +834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>footballer <span class="ot">&lt;-</span> Footballer<span class="sc">$</span><span class="fu">new</span>(<span class="at">accuracy =</span> <span class="fl">0.5</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>footballer<span class="sc">$</span><span class="fu">scored_goal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(purrr::map_vec(1:10, \(.) p$scored_goal()))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -900,18 +900,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Play three matches.</span></span>
 <span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="fu">play_match</span>(whales, squirrels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Squirrels wins!!!
-Whales :  1     Squirrels :  2 </code></pre>
+<pre><code>Whales wins!!!
+Whales :  5     Squirrels :  4 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">play_match</span>(squirrels, whales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Squirrels wins!!!
-Squirrels :  6     Whales :  2 </code></pre>
+<pre><code>Whales wins!!!
+Squirrels :  5     Whales :  6 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">play_match</span>(squirrels, whales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Squirrels wins!!!
-Squirrels :  5     Whales :  2 </code></pre>
+<pre><code>Whales wins!!!
+Squirrels :  1     Whales :  2 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print how many games each time won.</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">After three games..."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">The Whales have won"</span>, </span>
@@ -919,7 +919,7 @@ Squirrels :  5     Whales :  2 </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 After three games... 
-The Whales have won 0 games and the Squirrels have won 3</code></pre>
+The Whales have won 3 games and the Squirrels have won 0</code></pre>
 </div>
 </div>
 </section>
